@@ -1,0 +1,293 @@
+{
+  "run_id": "40579d1a-4d64-4e10-9113-b03c6f6c66fa",
+  "files": [
+    {
+      "file_path": "examples/bad-deployment.yaml",
+      "documents": [
+        {
+          "document_index": 0,
+          "actions": [
+            {
+              "finding": {
+                "code": "AUTOMOUNT_SA_TOKEN",
+                "title": "ServiceAccount token automount enabled",
+                "severity": "medium",
+                "path": "spec.automountServiceAccountToken",
+                "resource_kind": "Deployment",
+                "resource_name": "demo-api",
+                "namespace": null,
+                "container_name": null,
+                "message": "Disable automatic ServiceAccount token mounting unless required.",
+                "fixable": true,
+                "recommended_patch": "disable_automount_sa_token",
+                "signature": "Deployment:AUTOMOUNT_SA_TOKEN:-"
+              },
+              "action": {
+                "issue_code": "AUTOMOUNT_SA_TOKEN",
+                "patch_name": "disable_automount_sa_token",
+                "description": "Disabled automountServiceAccountToken",
+                "applied": true,
+                "details": {}
+              },
+              "learned_patch": null,
+              "memory_stats": {
+                "total": 1,
+                "successes": 1,
+                "success_rate": 1.0
+              }
+            },
+            {
+              "finding": {
+                "code": "HOST_NETWORK_ENABLED",
+                "title": "hostNetwork is enabled",
+                "severity": "high",
+                "path": "spec.hostNetwork",
+                "resource_kind": "Deployment",
+                "resource_name": "demo-api",
+                "namespace": null,
+                "container_name": null,
+                "message": "hostNetwork expands blast radius and should usually be disabled.",
+                "fixable": true,
+                "recommended_patch": "disable_host_network",
+                "signature": "Deployment:HOST_NETWORK_ENABLED:-"
+              },
+              "action": {
+                "issue_code": "HOST_NETWORK_ENABLED",
+                "patch_name": "disable_host_network",
+                "description": "Disabled hostNetwork",
+                "applied": true,
+                "details": {}
+              },
+              "learned_patch": null,
+              "memory_stats": {
+                "total": 1,
+                "successes": 1,
+                "success_rate": 1.0
+              }
+            },
+            {
+              "finding": {
+                "code": "IMAGE_LATEST_TAG",
+                "title": "Mutable image tag detected",
+                "severity": "high",
+                "path": "containers[0].image",
+                "resource_kind": "Deployment",
+                "resource_name": "demo-api",
+                "namespace": null,
+                "container_name": "api",
+                "message": "Pin images to an immutable version tag instead of latest or implicit tag.",
+                "fixable": true,
+                "recommended_patch": "pin_image_tag",
+                "signature": "Deployment:IMAGE_LATEST_TAG:api"
+              },
+              "action": {
+                "issue_code": "IMAGE_LATEST_TAG",
+                "patch_name": "pin_image_tag",
+                "description": "Pinned image to a stable tag",
+                "applied": true,
+                "details": {
+                  "image": "nginx:1.0.0"
+                }
+              },
+              "learned_patch": null,
+              "memory_stats": {
+                "total": 1,
+                "successes": 1,
+                "success_rate": 1.0
+              }
+            },
+            {
+              "finding": {
+                "code": "MISSING_RESOURCE_REQUESTS",
+                "title": "Missing resource requests",
+                "severity": "high",
+                "path": "containers[0].resources.requests",
+                "resource_kind": "Deployment",
+                "resource_name": "demo-api",
+                "namespace": null,
+                "container_name": "api",
+                "message": "Set CPU and memory requests to improve scheduling and reliability.",
+                "fixable": true,
+                "recommended_patch": "add_default_requests",
+                "signature": "Deployment:MISSING_RESOURCE_REQUESTS:api"
+              },
+              "action": {
+                "issue_code": "MISSING_RESOURCE_REQUESTS",
+                "patch_name": "add_default_requests",
+                "description": "Added default resource requests",
+                "applied": true,
+                "details": {
+                  "requests": {
+                    "cpu": "100m",
+                    "memory": "128Mi"
+                  }
+                }
+              },
+              "learned_patch": null,
+              "memory_stats": {
+                "total": 1,
+                "successes": 1,
+                "success_rate": 1.0
+              }
+            },
+            {
+              "finding": {
+                "code": "MISSING_RESOURCE_LIMITS",
+                "title": "Missing resource limits",
+                "severity": "medium",
+                "path": "containers[0].resources.limits",
+                "resource_kind": "Deployment",
+                "resource_name": "demo-api",
+                "namespace": null,
+                "container_name": "api",
+                "message": "Set CPU and memory limits to contain noisy-neighbor risk.",
+                "fixable": true,
+                "recommended_patch": "add_default_limits",
+                "signature": "Deployment:MISSING_RESOURCE_LIMITS:api"
+              },
+              "action": {
+                "issue_code": "MISSING_RESOURCE_LIMITS",
+                "patch_name": "add_default_limits",
+                "description": "Added default resource limits",
+                "applied": true,
+                "details": {
+                  "limits": {
+                    "cpu": "500m",
+                    "memory": "512Mi"
+                  }
+                }
+              },
+              "learned_patch": null,
+              "memory_stats": {
+                "total": 1,
+                "successes": 1,
+                "success_rate": 1.0
+              }
+            },
+            {
+              "finding": {
+                "code": "MISSING_READINESS_PROBE",
+                "title": "Missing readiness probe",
+                "severity": "medium",
+                "path": "containers[0].readinessProbe",
+                "resource_kind": "Deployment",
+                "resource_name": "demo-api",
+                "namespace": null,
+                "container_name": "api",
+                "message": "Add a readiness probe so traffic is only sent when the app is ready.",
+                "fixable": true,
+                "recommended_patch": "add_default_readiness_probe",
+                "signature": "Deployment:MISSING_READINESS_PROBE:api"
+              },
+              "action": {
+                "issue_code": "MISSING_READINESS_PROBE",
+                "patch_name": "add_default_readiness_probe",
+                "description": "Added default readiness probe",
+                "applied": true,
+                "details": {}
+              },
+              "learned_patch": null,
+              "memory_stats": {
+                "total": 1,
+                "successes": 1,
+                "success_rate": 1.0
+              }
+            },
+            {
+              "finding": {
+                "code": "MISSING_LIVENESS_PROBE",
+                "title": "Missing liveness probe",
+                "severity": "medium",
+                "path": "containers[0].livenessProbe",
+                "resource_kind": "Deployment",
+                "resource_name": "demo-api",
+                "namespace": null,
+                "container_name": "api",
+                "message": "Add a liveness probe to restart wedged containers.",
+                "fixable": true,
+                "recommended_patch": "add_default_liveness_probe",
+                "signature": "Deployment:MISSING_LIVENESS_PROBE:api"
+              },
+              "action": {
+                "issue_code": "MISSING_LIVENESS_PROBE",
+                "patch_name": "add_default_liveness_probe",
+                "description": "Added default liveness probe",
+                "applied": true,
+                "details": {}
+              },
+              "learned_patch": null,
+              "memory_stats": {
+                "total": 1,
+                "successes": 1,
+                "success_rate": 1.0
+              }
+            },
+            {
+              "finding": {
+                "code": "RUN_AS_NON_ROOT_MISSING",
+                "title": "runAsNonRoot is not enforced",
+                "severity": "high",
+                "path": "containers[0].securityContext.runAsNonRoot",
+                "resource_kind": "Deployment",
+                "resource_name": "demo-api",
+                "namespace": null,
+                "container_name": "api",
+                "message": "Set securityContext.runAsNonRoot to true.",
+                "fixable": true,
+                "recommended_patch": "set_run_as_non_root",
+                "signature": "Deployment:RUN_AS_NON_ROOT_MISSING:api"
+              },
+              "action": {
+                "issue_code": "RUN_AS_NON_ROOT_MISSING",
+                "patch_name": "set_run_as_non_root",
+                "description": "Set runAsNonRoot=true",
+                "applied": true,
+                "details": {}
+              },
+              "learned_patch": null,
+              "memory_stats": {
+                "total": 1,
+                "successes": 1,
+                "success_rate": 1.0
+              }
+            },
+            {
+              "finding": {
+                "code": "ALLOW_PRIV_ESC_NOT_FALSE",
+                "title": "allowPrivilegeEscalation is not disabled",
+                "severity": "high",
+                "path": "containers[0].securityContext.allowPrivilegeEscalation",
+                "resource_kind": "Deployment",
+                "resource_name": "demo-api",
+                "namespace": null,
+                "container_name": "api",
+                "message": "Disable privilege escalation unless explicitly required.",
+                "fixable": true,
+                "recommended_patch": "disable_privilege_escalation",
+                "signature": "Deployment:ALLOW_PRIV_ESC_NOT_FALSE:api"
+              },
+              "action": {
+                "issue_code": "ALLOW_PRIV_ESC_NOT_FALSE",
+                "patch_name": "disable_privilege_escalation",
+                "description": "Set allowPrivilegeEscalation=false",
+                "applied": true,
+                "details": {}
+              },
+              "learned_patch": null,
+              "memory_stats": {
+                "total": 1,
+                "successes": 1,
+                "success_rate": 1.0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "findings": 9,
+    "fixed": 9,
+    "unchanged": 0
+  }
+}

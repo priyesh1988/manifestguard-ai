@@ -1,0 +1,15 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-api
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: demo-api
+    spec:
+      hostNetwork: true
+      containers:
+        - name: api
+          image: nginx:latest

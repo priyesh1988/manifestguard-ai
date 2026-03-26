@@ -1,0 +1,4 @@
+manifestGuard:
+  dbPath: .manifestguard/history.sqlite3
+  defaultImageTag: 1.0.0
+  enableLearning: true
