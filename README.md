@@ -170,14 +170,6 @@ tests/
 - Use PR-based workflows before enabling direct writes in critical repositories.
 - The included Dockerfile and CI workflow are ready for GitHub-based delivery pipelines.
 
-## Roadmap already prepared in this repo structure
-
-- shared PostgreSQL memory backend for multi-team learning
-- SARIF export for code scanning integrations
-- PR comment bot for fix explanation and approval hints
-- richer policy export packs for Kyverno and Gatekeeper
-- optional LLM explanation layer on top of deterministic fixes
-
 ## License
 
 Apache-2.0
